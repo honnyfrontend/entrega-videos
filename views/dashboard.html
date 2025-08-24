@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | JOAO GABRIEL MARINS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <div class="dashboard-logo">
+                <i class="fas fa-video logo-icon"></i>
+                JOAO GABRIEL MARINS
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </button>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="upload-section">
+                <h2>Enviar Vídeos</h2>
+                <form id="uploadForm" class="upload-form">
+                    <label for="fileInput" class="custom-file-upload">
+                        <i class="fas fa-cloud-upload-alt"></i> Selecionar Vídeos
+                    </label>
+                    <input id="fileInput" type="file" name="videos" multiple accept="video/*">
+                    <div id="file-names">Nenhum arquivo selecionado.</div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-upload"></i> Enviar Vídeos
+                    </button>
+                    <div id="uploadProgress" class="progress-container" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="progress-text">0%</div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="videos-section">
+                <h2>Meus Vídeos</h2>
+                <div id="video-gallery" class="video-gallery">
+                    <p class="empty-message">Carregando vídeos...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Download -->
+    <div class="modal" id="downloadModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3>Opções de Download</h3>
+            <p>Selecione a qualidade desejada:</p>
+            <div class="quality-options">
+                <button class="quality-btn" onclick="downloadVideo('original')">Original (Máxima Qualidade)</button>
+                <button class="quality-btn" onclick="downloadVideo('high')">Alta Qualidade (80%)</button>
+                <button class="quality-btn" onclick="downloadVideo('medium')">Média Qualidade (60%)</button>
+                <button class="quality-btn" onclick="downloadVideo('low')">Baixa Qualidade (40%)</button>
+            </div>
+            <button class="cancel-btn" onclick="closeModal()">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>
